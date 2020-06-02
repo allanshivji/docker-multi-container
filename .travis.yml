@@ -11,10 +11,10 @@ script:
   - docker run -e CI=true allanshivji/react-multi-container npm test -- --coverage
 
 after_success:
-  - docker build allanshivji/multi-client ./client
-  - docker build allanshivji/multi-nginx ./nginx
-  - docker build allanshivji/multi-server ./server
-  - docker build allanshivji/multi-worker ./worker
+  - docker build -t allanshivji/multi-client ./client
+  - docker build -t allanshivji/multi-nginx ./nginx
+  - docker build -t allanshivji/multi-server ./server
+  - docker build -t allanshivji/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin docker.io
   # Take those images and push them to docker hub
